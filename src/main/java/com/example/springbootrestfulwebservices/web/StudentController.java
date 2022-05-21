@@ -3,6 +3,7 @@ package com.example.springbootrestfulwebservices.web;
 import com.example.springbootrestfulwebservices.model.Student;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.PortUnreachableException;
@@ -31,6 +32,13 @@ public class StudentController {
     // to the methodes arguments
     public Student StudentPathVariable(@PathVariable("firstName") String firstName,
                                        @PathVariable("lastName") String lastName){
+        return new Student(firstName,lastName);
+    }
+    // build rest Api to handle query parameters
+    //hhttp://localhost:8080/student?firstname = yves. this is query parameter requests or  web request
+    @GetMapping("/studentrequestparam")
+    public Student studentQueryParam(@RequestParam(name = "firstName") String firstName,
+                                     @RequestParam(name ="lastName") String lastName){
         return new Student(firstName,lastName);
     }
 }
