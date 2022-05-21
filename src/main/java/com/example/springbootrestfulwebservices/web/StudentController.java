@@ -2,6 +2,7 @@ package com.example.springbootrestfulwebservices.web;
 
 import com.example.springbootrestfulwebservices.model.Student;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.PortUnreachableException;
@@ -21,7 +22,15 @@ public class StudentController {
         students.add(new Student("Yves","Ngenzi"));
         students.add(new Student("Manzi","Yvos"));
         students.add(new Student("Edward","Kamuhanda"));
-
         return students;
+    }
+    //localhost:8080/student/ state the student. this method that we are going
+    // to write will be used
+    // we provide url path variables
+    @GetMapping("/student/{firstName}/{lastName}") // we need to bind this first and last
+    // to the methodes arguments
+    public Student StudentPathVariable(@PathVariable("firstName") String firstName,
+                                       @PathVariable("lastName") String lastName){
+        return new Student(firstName,lastName);
     }
 }
