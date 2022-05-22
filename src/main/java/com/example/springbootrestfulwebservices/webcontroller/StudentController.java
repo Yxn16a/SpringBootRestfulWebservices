@@ -1,4 +1,4 @@
-package com.example.springbootrestfulwebservices.web;
+package com.example.springbootrestfulwebservices.webcontroller;
 
 import com.example.springbootrestfulwebservices.model.Student;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.PortUnreachableException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class StudentController {
     }
     // build rest Api to handle query parameters
     //hhttp://localhost:8080/student?firstname = yves. this is query parameter requests or  web request
-    @GetMapping("/studentrequestparam")
+    @GetMapping("/student/query")
     public Student studentQueryParam(@RequestParam(name = "firstName") String firstName,
                                      @RequestParam(name ="lastName") String lastName){
         return new Student(firstName,lastName);
